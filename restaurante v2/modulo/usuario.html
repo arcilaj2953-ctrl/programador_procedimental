@@ -10,6 +10,23 @@
     />
 </head>
 <body>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="../index.html"> Restaurante De juanjo</a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="../index.html"> Inicio </a>
+          <a class="navbar-item" href="menu.html"> Menú </a>
+          <a class="navbar-item" href="pedidos.html"> Pedidos </a>
+          <a class="navbar-item" href="contabilidad.html"> Contabilidad </a>
+          <a class="navbar-item" href="usuario.html"> Usuario </a>
+          <a class="navbar-item" href="inventario.html"> Inventario </a>
+          <a class="navbar-item" href="quienes.html"> Quiénes Somos </a>
+        </div>
+      </div>
+    </nav>
 
 <section class="section">
     <div class="container">
@@ -21,14 +38,14 @@
     <div class="field">
   <label class="label">Nombre</label>
   <div class="control">
-    <input class="input" type="text">
+    <input class="input" type="text" id="nombre">
   </div>
 </div>
 
 <div class="field">
   <label class="label">Apellido</label>
   <div class="control">
-    <input class="input" type="text">
+    <input class="input" type="text" id="apellido">
   </div>
 </div>
 
@@ -81,7 +98,7 @@
 <div class="field">
   <label class="label">Cargo</label>
   <div class="control">
-    <input class="input" type="text">
+    <input class="input" type="text" id="cargo">
   </div>
 </div>
 
@@ -101,8 +118,20 @@
 
 <div class="field">
   <div class="control">
-    <button class="button is-link">Guardar</button>
+    <button class="button is-link" onclick="guardarDatos()">Guardar</button>
   </div>
 </div>
+
+<script>
+function guardarDatos() {
+    const nombre = document.getElementById('nombre').value;
+    const apellido = document.getElementById('apellido').value;
+    const cargo = document.getElementById('cargo').value;
+    if(nombre) localStorage.setItem('registro_nombre', nombre);
+    if(apellido) localStorage.setItem('registro_apellido', apellido);
+    if(cargo) localStorage.setItem('registro_cargo', cargo);
+    alert('Datos de usuario guardados correctamente en local. Puedes ir a Contabilidad para verlos.');
+}
+</script>
 </body>
 </html>
