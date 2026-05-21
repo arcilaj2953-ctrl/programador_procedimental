@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventario</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="../index.html"> Restaurante De juanjo</a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="../index.html"> Inicio </a>
+          <a class="navbar-item" href="menu.html"> Menú </a>
+          <a class="navbar-item" href="pedidos.html"> Pedidos </a>
+          <a class="navbar-item" href="contabilidad.html"> Contabilidad </a>
+          <a class="navbar-item" href="usuario.html"> Usuario </a>
+          <a class="navbar-item" href="inventario.html"> Inventario </a>
+          <a class="navbar-item" href="quienes.html"> Quiénes Somos </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="section">
+      <div class="container">
+        <h1 class="title has-text-centered">Inventario</h1>
+        <h1 class="subtitle has-text-centered">Gestión de productos y stock</h1>
+      </div>
+    </section>
+
+    <section class="section pt-0">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="box">
+              <h2 class="title is-4">Registrar Nuevo Producto</h2>
+              <form id="form_inventario">
+                <div class="field">
+                  <label class="label">Código de producto</label>
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Ej: PROD-001"
+                      id="codigo_producto"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Nombre del producto</label>
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Ej: Harina de trigo"
+                      id="nombre_producto"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Cantidad</label>
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="number"
+                      min="0"
+                      placeholder="Ej: 50"
+                      id="cantidad_producto"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Marca</label>
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Ej: Haz de Oros"
+                      id="marca_producto"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="field mt-5">
+                  <div class="control">
+                    <button type="submit" class="button is-link is-fullwidth">
+                      Registrar Producto
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered mt-5">
+          <div class="column is-10">
+            <div class="box">
+              <h2 class="title is-4">Lista de Inventario</h2>
+              <div class="table-container">
+                <table class="table is-fullwidth is-striped is-hoverable">
+                  <thead>
+                    <tr>
+                      <th>Código</th>
+                      <th>Nombre</th>
+                      <th>Cantidad</th>
+                      <th>Marca</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tabla_inventario"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const $navbarBurgers = Array.prototype.slice.call(
+          document.querySelectorAll(".navbar-burger"),
+          0,
+        );
+        if ($navbarBurgers.length > 0) {
+          $navbarBurgers.forEach((el) => {
+            el.addEventListener("click", () => {
+              const target = el.dataset.target;
+              const $target = document.getElementById(target);
+              el.classList.toggle("is-active");
+              $target.classList.toggle("is-active");
+            });
+          });
+        }
+        const formInventario = document.getElementById("form_inventario");
+        const tablaInventario = document.getElementById("tabla_inventario");
+        let inventario =
+          JSON.parse(localStorage.getItem("inventario_data")) || [];
+
+        const renderTable = () => {
+          tablaInventario.innerHTML = "";
+          if (inventario.length === 0) {
+            tablaInventario.innerHTML =
+              '<tr><td colspan="5" class="has-text-centered">No hay productos registrados en el inventario.</td></tr>';
+            return;
+          }
+
+          inventario.forEach((producto, index) => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td>${producto.codigo}</td>
+              <td>${producto.nombre}</td>
+              <td>${producto.cantidad}</td>
+              <td>${producto.marca}</td>
+              <td>
+                <button class="button is-danger is-small" onclick="eliminarProducto(${index})">Eliminar</button>
+              </td>
+            `;
+            tablaInventario.appendChild(tr);
+          });
+        };
+
+        window.eliminarProducto = (index) => {
+          inventario.splice(index, 1);
+          localStorage.setItem("inventario_data", JSON.stringify(inventario));
+          renderTable();
+        };
+
+        formInventario.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const codigo = document
+            .getElementById("codigo_producto")
+            .value.trim();
+          const nombre = document
+            .getElementById("nombre_producto")
+            .value.trim();
+          const cantidad = document
+            .getElementById("cantidad_producto")
+            .value.trim();
+          const marca = document.getElementById("marca_producto").value.trim();
+
+          if (codigo && nombre && cantidad && marca) {
+            inventario.push({ codigo, nombre, cantidad, marca });
+            localStorage.setItem("inventario_data", JSON.stringify(inventario));
+            renderTable();
+            formInventario.reset();
+          }
+        });
+
+        renderTable();
+      });
+    </script>
+  </body>
+</html>
