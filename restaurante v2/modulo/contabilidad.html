@@ -1,12 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contabilidad</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="../index.html"> Restaurante De juanjo</a>
@@ -25,92 +28,100 @@
       </div>
     </nav>
 
-<section class="section">
-    <div class="container">
+    <section class="section">
+      <div class="container">
         <h1 class="title has-text-centered">Contabilidad</h1>
-        <h1 class="subtitle has-text-centered">Registro de ventas y movimientos</h1>
-    </div>
-</section>
+        <h1 class="subtitle has-text-centered">
+          Registro de ventas y movimientos
+        </h1>
+      </div>
+    </section>
 
-<section class="section pt-0">
-    <div class="container">
+    <section class="section pt-0">
+      <div class="container">
         <div class="columns">
-            <div class="column is-8">
-                
-                <div class="field">
-                    <label class="label">Ventas</label>
-                    <div class="control">
-                        <input class="input" type="number" placeholder="Ej: 50000">
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Fecha</label>
-                    <div class="control">
-                        <input class="input" type="date">
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Ingresos</label>
-                    <div class="control">
-                        <input class="input" type="number" placeholder="Ej: 50000">
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Egresos</label>
-                    <div class="control">
-                        <input class="input" type="number" placeholder="Ej: 20000">
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Concepto</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Ej: Venta del día">
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Valor</label>
-                    <div class="control">
-                        <input class="input" type="number" placeholder="Ej: 30000">
-                    </div>
-                </div>
-
-                <div class="field mt-5">
-                    <div class="control">
-                        <button class="button is-link">Guardar</button>
-                    </div>
-                </div>
-
+          <div class="column is-8">
+            <div class="field">
+              <label class="label">Ventas</label>
+              <div class="control">
+                <input class="input" id="ventas" type="number" placeholder="Ej: 50000" />
+              </div>
             </div>
-            <div class="column is-4">
-                <div class="card">
-                    <div class="card-content has-text-centered">
-                        <figure class="image is-128x128 is-inline-block">
-                            <img class="is-rounded" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Foto de perfil">
-                        </figure>
-                        <p class="title is-4 mt-4" id="user-name">Usuario Invitado</p>
-                    </div>
-                </div>
+
+            <div class="field">
+              <label class="label">Fecha</label>
+              <div class="control">
+                <input class="input" id="fecha" type="date" />
+              </div>
             </div>
+
+            <div class="field">
+              <label class="label">Ingresos</label>
+              <div class="control">
+                <input class="input" id="ingresos" type="number" placeholder="Ej: 50000" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Egresos</label>
+              <div class="control">
+                <input class="input" id="egresos" type="number" placeholder="Ej: 20000" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Concepto</label>
+              <div class="control">
+                <input
+                  class="input"
+                  id="concepto"
+                  type="text"
+                  placeholder="Ej: Venta del día"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Valor</label>
+              <div class="control">
+                <input class="input" id="valor" type="number" placeholder="Ej: 30000" />
+              </div>
+            </div>
+
+            <div class="field mt-5">
+              <div class="control">
+                <button class="button is-link">Guardar</button>
+              </div>
+            </div>
+          </div>
+          <div class="column is-4">
+            <div class="card">
+              <div class="card-content has-text-centered">
+                <figure class="image is-128x128 is-inline-block">
+                  <img
+                    class="is-rounded"
+                    src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                    alt="Foto de perfil"
+                  />
+                </figure>
+                <p class="title is-4 mt-4" id="user-name">Usuario Invitado</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const nombre = localStorage.getItem('registro_nombre');
-        const apellido = localStorage.getItem('registro_apellido');
-        
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const nombre = localStorage.getItem("registro_nombre");
+        const apellido = localStorage.getItem("registro_apellido");
+
         if (nombre || apellido) {
-            const nombreCompleto = `${nombre || ''} ${apellido || ''}`.trim();
-            document.getElementById('user-name').textContent = nombreCompleto;
+          const nombreCompleto = `${nombre || ""} ${apellido || ""}`.trim();
+          document.getElementById("user-name").textContent = nombreCompleto;
         }
-    });
-</script>
-
-</body>
+      });
+    </script>
+  </body>
 </html>
