@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de usuario</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+</head>
+<body>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="../index.html"> Restaurante De juanjo</a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="../index.html"> Inicio </a>
+          <a class="navbar-item" href="menu.html"> Menú </a>
+          <a class="navbar-item" href="pedidos.html"> Pedidos </a>
+          <a class="navbar-item" href="contabilidad.html"> Contabilidad </a>
+          <a class="navbar-item" href="usuario.html"> Usuario </a>
+          <a class="navbar-item" href="inventario.html"> Inventario </a>
+          <a class="navbar-item" href="quienes.html"> Quiénes Somos </a>
+        </div>
+      </div>
+    </nav>
+
+<section class="section">
+    <div class="container">
+        <h1 class="title has-text-centered">Registro de Usuario</h1>
+        <h1 class="subtitle has-text-centered">Ingresa los datos para el registro</h1>
+    </div>
+</section>
+
+    <div class="field">
+  <label class="label">Nombre</label>
+  <div class="control">
+    <input class="input" id="nombre" type="text">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Apellido</label>
+  <div class="control">
+    <input class="input" id="apellido" type="text">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Tipo de documento</label>
+  <div class="control">
+    <div class="select">
+      <select id="tipo_documento">
+        <option>Cédula</option>
+        <option>T.I Identidad</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Número de documento</label>
+  <div class="control">
+    <input class="input" id="numero_documento" type="text">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Teléfono</label>
+  <div class="control">
+    <input class="input" id="telefono" type="tel">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Correo</label>
+  <div class="control">
+    <input class="input" id="correo" type="email">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Género</label>
+  <div class="control">
+    <div class="select">
+      <select id="genero">
+        <option>Masculino</option>
+        <option>Femenino</option>
+        <option>Otro</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Cargo</label>
+  <div class="control">
+    <input class="input" type="text" id="cargo">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Fecha de nacimiento</label>
+  <div class="control">
+    <input class="input" type="date" id="fecha_nacimiento">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Contraseña</label>
+  <div class="control">
+    <input class="input" type="password" id="contraseña">
+  </div>
+</div>
+
+<div class="field">
+  <div class="control">
+    <button class="button is-link" onclick="ValidarDatos()">Guardar</button>
+  </div>
+</div>
+<script src="../../js/usuario.js"></script>
+</body>
+</html>

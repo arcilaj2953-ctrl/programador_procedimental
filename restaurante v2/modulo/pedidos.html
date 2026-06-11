@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedidos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="../index.html"> Restaurante De juanjo</a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="../index.html"> Inicio </a>
+          <a class="navbar-item" href="menu.html"> Menú </a>
+          <a class="navbar-item" href="pedidos.html"> Pedidos </a>
+          <a class="navbar-item" href="contabilidad.html"> Contabilidad </a>
+          <a class="navbar-item" href="usuario.html"> Usuario </a>
+          <a class="navbar-item" href="inventario.html"> Inventario </a>
+          <a class="navbar-item" href="quienes.html"> Quiénes Somos </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="section">
+      <div class="container">
+        <h1 class="title has-text-centered">Pedidos</h1>
+        <h1 class="subtitle has-text-centered">
+          Realiza tu pedido de forma rápida y sencilla
+        </h1>
+      </div>
+    </section>
+
+    <section class="section pt-0">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="box">
+              <form id="form_pedidos">
+                <div class="field">
+                  <label class="label">Nombre del usuario</label>
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Ej: Juan Pérez"
+                      id="nombre_usuario"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Teléfono</label>
+                  <div class="control">
+                    <input
+                      class="input"
+                      id="telefono_usuario"
+                      type="tel"
+                      placeholder="Ej: 3001234567"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Dirección</label>
+                  <div class="control">
+                    <input
+                      class="input"
+                      id="direccion_usuario"
+                      type="text"
+                      placeholder="Ej: Calle 123 #45-67"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Producto</label>
+                  <div class="control">
+                    <div class="select is-fullwidth">
+                      <select id="producto" required>
+                        <option value="">Selecciona un producto...</option>
+                        <option value="postre_tres_leches">
+                          Postre de tres leches
+                        </option>
+                        <option value="postre_limon">Postre de limón</option>
+                        <option value="postre_maracuya">
+                          Postre de maracuyá
+                        </option>
+                        <option value="postre_mora">Postre de mora</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Cantidad</label>
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="number"
+                      min="1"
+                      placeholder="Ej: 2"
+                      id="cantidad"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Método de pago</label>
+                  <div class="control">
+                    <div class="select is-fullwidth">
+                      <select id="metodo_pago" required>
+                        <option value="">
+                          Selecciona un método de pago...
+                        </option>
+                        <option value="efectivo">Efectivo</option>
+                        <option value="tarjeta">
+                          Tarjeta de Crédito / Débito
+                        </option>
+                        <option value="transferencia">
+                          Transferencia Bancaria
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field mt-5">
+                  <div class="control">
+                    <button type="submit" class="button is-link is-fullwidth">
+                      Confirmar Pedido
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const $navbarBurgers = Array.prototype.slice.call(
+          document.querySelectorAll(".navbar-burger"),
+          0,
+        );
+        if ($navbarBurgers.length > 0) {
+          $navbarBurgers.forEach((el) => {
+            el.addEventListener("click", () => {
+              const target = el.dataset.target;
+              const $target = document.getElementById(target);
+              el.classList.toggle("is-active");
+              $target.classList.toggle("is-active");
+            });
+          });
+        }
+
+        const nombre = localStorage.getItem("registro_nombre");
+        const apellido = localStorage.getItem("registro_apellido");
+
+        if (nombre || apellido) {
+          const nombreCompleto = `${nombre || ""} ${apellido || ""}`.trim();
+          const nombreInput = document.getElementById("nombre_usuario");
+          if (nombreInput) {
+            nombreInput.value = nombreCompleto;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
