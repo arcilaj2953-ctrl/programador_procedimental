@@ -15,22 +15,46 @@ function ValidarDatos() {
     valor = document.getElementById("valor").value;
 
     if (ventas === "" || fecha === "" || ingresos === "" || egresos === "" || concepto === "" || valor === "") {
-        console.log("los datos son incorrectos");
+        Swal.fire({
+            title: "¡Campos vacíos!",
+            text: "Por favor, completa todos los campos del registro contable.",
+            icon: "warning"
+        });
     } else {
         if (isNaN(ventas)) {
-            console.log("los datos son incorrectos");
+            Swal.fire({
+                title: "Ventas inválidas",
+                text: "El valor de ventas debe ser un número.",
+                icon: "error"
+            });
         }
         if (isNaN(ingresos)) {
-            console.log("los datos son incorrectos");
+            Swal.fire({
+                title: "Ingresos inválidos",
+                text: "El valor de ingresos debe ser un número.",
+                icon: "error"
+            });
         }
         if (isNaN(egresos)) {
-            console.log("los datos son incorrectos");
+            Swal.fire({
+                title: "Egresos inválidos",
+                text: "El valor de egresos debe ser un número.",
+                icon: "error"
+            });
         }
         if (/\d/.test(concepto)) {
-            console.log("los datos son incorrectos");
+            Swal.fire({
+                title: "Concepto inválido",
+                text: "El concepto no debe contener números.",
+                icon: "error"
+            });
         }
         if (isNaN(valor)) {
-            console.log("los datos son incorrectos");
+            Swal.fire({
+                title: "Valor inválido",
+                text: "El valor ingresado debe ser numérico.",
+                icon: "error"
+            });
         }
     }
 }

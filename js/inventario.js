@@ -10,19 +10,39 @@ function ValidarDatos() {
     precio_unitario = document.getElementById("precio_unitario").value;
 
     if (codigo_producto === "" || nombre_producto === "" || cantidad === "" || precio_unitario === "") {
-        console.log("los datos son incorrectos");
+        Swal.fire({
+            title: "¡Campos vacíos!",
+            text: "Por favor, complete todos los campos del inventario.",
+            icon: "warning"
+        });
     } else {
         if (isNaN(codigo_producto)) {
-            console.log("los datos son incorrectos");
+            Swal.fire({
+                title: "Código inválido",
+                text: "El código del producto debe ser un valor numérico.",
+                icon: "error"
+            });
         }
         if (/\d/.test(nombre_producto)) {
-            console.log("los datos son incorrectos");
+            Swal.fire({
+                title: "Nombre inválido",
+                text: "El nombre del producto no debe contener números.",
+                icon: "error"
+            });
         }
         if (isNaN(cantidad)) {
-            console.log("los datos son incorrectos");
+            Swal.fire({
+                title: "Cantidad inválida",
+                text: "La cantidad del producto debe ser un número entero o decimal.",
+                icon: "error"
+            });
         }
         if (isNaN(precio_unitario)) {
-            console.log("los datos son incorrectos");
+            Swal.fire({
+                title: "Precio inválido",
+                text: "El precio unitario debe ser un valor numérico.",
+                icon: "error"
+            });
         }
     }
 }
