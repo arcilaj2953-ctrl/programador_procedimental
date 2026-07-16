@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiénes Somos - Restaurante De juanjo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="../index.html"> Restaurante De juanjo</a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="../index.html"> Inicio </a>
+          <a class="navbar-item" href="menu.html"> Menú </a>
+          <a class="navbar-item" href="pedidos.html"> Pedidos </a>
+          <a class="navbar-item" href="contabilidad.html"> Contabilidad </a>
+          <a class="navbar-item" href="usuario.html"> Usuario </a>
+          <a class="navbar-item" href="inventario.html"> Inventario </a>
+          <a class="navbar-item" href="quienes.html"> Quiénes Somos </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="section">
+      <div class="container">
+        <h1 class="title has-text-centered is-1">Quiénes Somos</h1>
+        <h2 class="subtitle has-text-centered is-4">
+          Conoce la historia detrás de cada platillo
+        </h2>
+      </div>
+    </section>
+
+    <section class="section pt-0">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="box">
+              <div class="content is-medium">
+                <figure class="image is-16by9 mb-6">
+                  <img src="https://www.verdissimo.com/wp-content/uploads/2019/04/decoracion-restaurantes-img2-verdissimo.jpg" alt="Interior del Restaurante De juanjo" style="border-radius: 8px; object-fit: cover; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+                </figure>
+                <h3>Nuestra Historia</h3>
+                <p>
+                  El <strong>Restaurante De juanjo</strong> nació de una
+                  profunda pasión por la gastronomía y el deseo de compartir
+                  recetas familiares que han pasado de generación en generación.
+                  Todo comenzó en una pequeña cocina, donde los aromas de las
+                  especias y el amor por la buena comida inspiraron la creación
+                  de un espacio donde las personas pudieran sentirse como en
+                  casa.
+                </p>
+                <p>
+                  Con el paso de los años, lo que empezó como un sueño se
+                  convirtió en un lugar de encuentro para familias, amigos y
+                  amantes de los sabores auténticos. Cada plato que servimos
+                  cuenta una parte de nuestra historia y refleja nuestro
+                  compromiso con la excelencia culinaria.
+                </p>
+
+                <h3>Nuestra Misión</h3>
+                <p>
+                  Nuestra misión es brindar una experiencia culinaria
+                  inolvidable, ofreciendo platos preparados con los ingredientes
+                  más frescos y de la más alta calidad. Nos esforzamos por crear
+                  un ambiente acogedor y un servicio excepcional que haga que
+                  cada visita sea especial.
+                </p>
+
+                <h3>Nuestra Visión</h3>
+                <p>
+                  Aspiramos a ser reconocidos como el restaurante líder en
+                  nuestra comunidad, destacando por nuestra innovación, calidad
+                  constante y el calor humano de nuestro equipo. Queremos seguir
+                  creciendo y adaptándonos, sin perder nunca la esencia casera
+                  que nos caracteriza.
+                </p>
+
+                <hr />
+
+                <div class="has-text-centered mt-5">
+                  <p class="is-italic">
+                    "La buena comida es el lenguaje del amor, y en el
+                    Restaurante De juanjo, hablamos ese idioma todos los días."
+                  </p>
+                  <p><strong>- Juanjo, Fundador</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const $navbarBurgers = Array.prototype.slice.call(
+          document.querySelectorAll(".navbar-burger"),
+          0,
+        );
+        if ($navbarBurgers.length > 0) {
+          $navbarBurgers.forEach((el) => {
+            el.addEventListener("click", () => {
+              const target = el.dataset.target;
+              const $target = document.getElementById(target);
+              el.classList.toggle("is-active");
+              $target.classList.toggle("is-active");
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
